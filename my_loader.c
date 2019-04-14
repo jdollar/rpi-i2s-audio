@@ -15,6 +15,13 @@
  *
  * =====================================================================================
  */
+#if defined (PI_ZERO_W) || defined (PI_ZERO)
+#define PLATFORM_NAME "20203000.i2s"
+#elif defined (PI_3_B_PLUS) || defined(PI_3)
+#define PLATFORM_NAME "3f203000.i2s"
+#endif
+
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/kmod.h>
@@ -40,10 +47,10 @@ static struct asoc_simple_card_info snd_rpi_simple_card_info = {
 .card = "snd_rpi_simple_card", // -> snd_soc_card.name
 .name = "simple-card_codec_link", // -> snd_soc_dai_link.name
 .codec = "snd-soc-dummy", // "dmic-codec", // -> snd_soc_dai_link.codec_name
-.platform = "20203000.i2s",
+.platform = PLATFORM_NAME,
 .daifmt = SND_SOC_DAIFMT_I2S | SND_SOC_DAIFMT_NB_NF | SND_SOC_DAIFMT_CBS_CFS,
 .cpu_dai = {
-.name = "20203000.i2s", // -> snd_soc_dai_link.cpu_dai_name
+.name = PLATFORM_NAME, // -> snd_soc_dai_link.cpu_dai_name
 .sysclk = 0 },
 .codec_dai = {
 .name = "snd-soc-dummy-dai", //"dmic-codec", // -> snd_soc_dai_link.codec_dai_name
