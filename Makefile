@@ -1,5 +1,7 @@
 obj-m := my_loader.o
 
+CFLAGS_my_loader.o := -D$(BOARD_MACRO)
+
 all: modules
 
 modules: 

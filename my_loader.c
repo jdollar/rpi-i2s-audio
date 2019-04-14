@@ -15,9 +15,9 @@
  *
  * =====================================================================================
  */
-#if defined (PI_ZERO_W) || defined (PI_ZERO)
+#ifdef PI_ZERO
 #define PLATFORM_NAME "20203000.i2s"
-#elif defined (PI_3_B_PLUS) || defined(PI_3)
+#elif defined (PI_3) || defined (PI_2)
 #define PLATFORM_NAME "3f203000.i2s"
 #endif
 
@@ -76,7 +76,7 @@ pr_alert("request module load '%s': %d\n",dmaengine, ret);
 ret = platform_device_register(&snd_rpi_simple_card_device);
 pr_alert("register platform device '%s': %d\n",snd_rpi_simple_card_device.name, ret);
 
-pr_alert("Started i2s device\n");
+pr_alert("Started i2s device new\n");
 return 0;
 }
 
